@@ -1,6 +1,6 @@
-# MZAZI TECH UNLOCKING CENTER
+# SAHIHI DEVICE LABS
 
-Marketing site and staff intake dashboard for MZAZI TECH INC — a Nairobi device-solutions practice offering Android diagnostics, lock-status reporting, IMEI verification, security testing, carrier unlocking and financing lock release support.
+Marketing site and staff intake dashboard for SAHIHI DEVICE LABS LTD — a Nairobi device-solutions practice offering Android diagnostics, lock-status reporting, IMEI verification, security testing, carrier unlocking and financing lock release support.
 
 ## Pages
 
@@ -12,7 +12,7 @@ Marketing site and staff intake dashboard for MZAZI TECH INC — a Nairobi devic
 | `about.html` | Company story, values, practice areas |
 | `faq.html` | Service, data-handling and eligibility questions |
 | `contact.html` | Service request form (device type, model, IMEI, financing provider) |
-| `admin.html` | Staff dashboard — access code `mzazi-admin` |
+| `admin.html` | Staff dashboard — access code `sahihi-admin` |
 
 ## Stack
 

@@ -1,11 +1,11 @@
 /* ============================================================
-   MZAZI TECH — staff intake dashboard
+   SAHIHI — staff intake dashboard
    ============================================================ */
 (function () {
   "use strict";
 
-  var AUTH_KEY = "mzazi.desk.v2";
-  var PASSCODE = "mzazi-admin";
+  var AUTH_KEY = "sahihi.desk.v2";
+  var PASSCODE = "sahihi-admin";
 
   var gate = document.getElementById("adminGate");
   var gateForm = document.getElementById("gateForm");
@@ -16,7 +16,7 @@
   var search = document.getElementById("adminSearch");
   var filter = document.getElementById("adminFilter");
   var detail = document.getElementById("detailPanel");
-  var toast = window.mzaziToast || function () {};
+  var toast = window.sahihiToast || function () {};
 
   function isAuthed() {
     try { return sessionStorage.getItem(AUTH_KEY) === "1"; } catch (e) { return false; }
@@ -77,7 +77,7 @@
   var STATUS_LABEL = { pending: "Pending", contacted: "In progress", completed: "Completed", closed: "Closed" };
 
   function currentList() {
-    var list = window.MZAZI.getRequests();
+    var list = window.SAHIHI.getRequests();
     var q = ((search && search.value) || "").trim().toLowerCase();
     var f = (filter && filter.value) || "all";
     return list.filter(function (r) {
@@ -87,7 +87,7 @@
   }
 
   function renderKpis() {
-    var list = window.MZAZI.getRequests();
+    var list = window.SAHIHI.getRequests();
     var map = {
       kpiTotal: list.length,
       kpiPending: list.filter(function (r) { return r.status === "pending"; }).length,
@@ -104,7 +104,7 @@
     if (!tbody) return;
     renderKpis();
     var list = currentList();
-    var all = window.MZAZI.getRequests();
+    var all = window.SAHIHI.getRequests();
 
     tbody.innerHTML = list.map(function (r) {
       return '<tr data-id="' + esc(r.id) + '">' +
@@ -141,13 +141,13 @@
       var btn = e.target.closest("button[data-act]");
       if (!btn) return;
       var id = btn.closest("tr").getAttribute("data-id");
-      var list = window.MZAZI.getRequests();
+      var list = window.SAHIHI.getRequests();
       var item = list.filter(function (r) { return r.id === id; })[0];
       if (!item) return;
 
       if (btn.getAttribute("data-act") === "delete") {
         if (!window.confirm("Delete request " + id + "?")) return;
-        window.MZAZI.saveRequests(list.filter(function (r) { return r.id !== id; }));
+        window.SAHIHI.saveRequests(list.filter(function (r) { return r.id !== id; }));
         detail.classList.remove("is-on");
         render();
         toast("Request removed");
@@ -186,7 +186,7 @@
       if (e.target.id !== "detailStatus") return;
       var id = e.target.getAttribute("data-id");
       var val = e.target.value;
-      window.MZAZI.saveRequests(window.MZAZI.getRequests().map(function (r) {
+      window.SAHIHI.saveRequests(window.SAHIHI.getRequests().map(function (r) {
         if (r.id === id) r.status = val;
         return r;
       }));
@@ -206,7 +206,7 @@
   var exportBtn = document.getElementById("exportCsv");
   if (exportBtn) {
     exportBtn.addEventListener("click", function () {
-      var list = window.MZAZI.getRequests();
+      var list = window.SAHIHI.getRequests();
       if (!list.length) return toast("No records to export");
       var head = ["Reference", "Name", "Email", "Phone", "Device type", "Device", "IMEI", "Financing", "Service", "Status", "Received", "Message"];
       var rows = list.map(function (r) {
@@ -219,7 +219,7 @@
       var url = URL.createObjectURL(blob);
       var a = document.createElement("a");
       a.href = url;
-      a.download = "mzazi-service-requests.csv";
+      a.download = "sahihi-service-requests.csv";
       document.body.appendChild(a);
       a.click();
       document.body.removeChild(a);
@@ -232,7 +232,7 @@
   if (clearBtn) {
     clearBtn.addEventListener("click", function () {
       if (!window.confirm("Clear all requests stored on this workstation?")) return;
-      window.MZAZI.saveRequests([]);
+      window.SAHIHI.saveRequests([]);
       detail.classList.remove("is-on");
       render();
       toast("Workstation data cleared");
@@ -242,9 +242,9 @@
   var seedBtn = document.getElementById("seedData");
   if (seedBtn) {
     seedBtn.addEventListener("click", function () {
-      if (window.MZAZI.getRequests().length && !window.confirm("Add the example records again?")) return;
-      try { localStorage.removeItem("mzazi.seeded.v2"); } catch (e) {}
-      window.MZAZI.seed();
+      if (window.SAHIHI.getRequests().length && !window.confirm("Add the example records again?")) return;
+      try { localStorage.removeItem("sahihi.seeded.v2"); } catch (e) {}
+      window.SAHIHI.seed();
       render();
       toast("Example records restored");
     });

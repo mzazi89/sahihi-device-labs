@@ -1,5 +1,5 @@
 /* ============================================================
-   MZAZI TECH — service pre-check (browser-side guidance only)
+   SAHIHI — service pre-check (browser-side guidance only)
    Does not contact a device, carrier or financing provider.
    ============================================================ */
 (function () {
@@ -125,7 +125,7 @@
 
   function lockResult(raw) {
     var c = classify(raw);
-    var ref = "MZ-" + Math.floor(2000 + Math.random() * 7000);
+    var ref = "SD-" + Math.floor(2000 + Math.random() * 7000);
     return {
       title: "Pre-check summary",
       badge: c.declined ? "REVIEW" : "ROUTE",
@@ -224,7 +224,7 @@
       busy = false;
       runBtn.removeAttribute("disabled");
       runBtn.innerHTML = runHtml;
-      window.mzaziToast && window.mzaziToast("Pre-check ready");
+      window.sahihiToast && window.sahihiToast("Pre-check ready");
     }
 
     setTimeout(next, 200);

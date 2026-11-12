@@ -1,12 +1,12 @@
 /* ============================================================
-   MZAZI TECH — site behaviour + service request store
+   SAHIHI — site behaviour + service request store
    ============================================================ */
 (function () {
   "use strict";
 
   var K = {
-    requests: "mzazi.requests.v2",
-    seeded: "mzazi.seeded.v2"
+    requests: "sahihi.requests.v2",
+    seeded: "sahihi.seeded.v2"
   };
 
   function read(key, fallback) {
@@ -23,7 +23,7 @@
 
   function uid(prefix) {
     var n = Math.random().toString(36).slice(2, 7).toUpperCase();
-    return (prefix || "MZ") + "-" + new Date().getFullYear() + "-" + n;
+    return (prefix || "SD") + "-" + new Date().getFullYear() + "-" + n;
   }
 
   function daysAgo(d) {
@@ -36,27 +36,27 @@
   function seed() {
     if (read(K.seeded, false)) return;
     var samples = [
-      { id: uid("MZ"), name: "Daniel Mokoena", email: "d.mokoena@example.com", phone: "+254 712 555 034",
+      { id: uid("SD"), name: "Daniel Mokoena", email: "d.mokoena@example.com", phone: "+254 712 555 034",
         deviceType: "Smartphone", device: "Samsung Galaxy S23", imei: "", finance: "None — device is fully owned",
         service: "Android Device Diagnostics", message: "Screen flickers after the last update. Needs a diagnostic sheet for a resale.",
         status: "pending", createdAt: daysAgo(0) },
-      { id: uid("MZ"), name: "Amina Yusuf", email: "amina.yusuf@example.com", phone: "+254 733 555 018",
+      { id: uid("SD"), name: "Amina Yusuf", email: "amina.yusuf@example.com", phone: "+254 733 555 018",
         deviceType: "Smartphone", device: "Google Pixel 7a", imei: "353918082379567", finance: "M-KOPA",
         service: "Financing Lock Release Support", message: "Handset is fully paid. M-KOPA statement attached — requesting release.",
         status: "contacted", createdAt: daysAgo(1) },
-      { id: uid("MZ"), name: "Tariro Ndlovu", email: "t.ndlovu@example.com", phone: "+263 77 555 014",
+      { id: uid("SD"), name: "Tariro Ndlovu", email: "t.ndlovu@example.com", phone: "+263 77 555 014",
         deviceType: "Smartphone", device: "Xiaomi Redmi Note 12", imei: "", finance: "Watu Credit",
         service: "Device Lock Status Report", message: "Bought second-hand. Need a lock-status report before I pay the balance.",
         status: "completed", createdAt: daysAgo(3) },
-      { id: uid("MZ"), name: "Kwame Mensah", email: "k.mensah@example.com", phone: "+233 24 555 017",
+      { id: uid("SD"), name: "Kwame Mensah", email: "k.mensah@example.com", phone: "+233 24 555 017",
         deviceType: "Tablet", device: "Samsung Galaxy Tab A8", imei: "", finance: "None — device is fully owned",
         service: "IMEI & Ownership Verification", message: "IMEI on the box does not match the one in settings. Need this checked.",
         status: "pending", createdAt: daysAgo(5) },
-      { id: uid("MZ"), name: "Lerato Dube", email: "lerato.dube@example.com", phone: "+254 701 555 092",
+      { id: uid("SD"), name: "Lerato Dube", email: "lerato.dube@example.com", phone: "+254 701 555 092",
         deviceType: "Smartphone", device: "Tecno Camon 20", imei: "", finance: "OnPhone",
         service: "Carrier Unlocking", message: "Contract ended last month. Requesting network unlock.",
         status: "closed", createdAt: daysAgo(9) },
-      { id: uid("MZ"), name: "Peter Otieno", email: "p.otieno@example.com", phone: "+254 720 555 011",
+      { id: uid("SD"), name: "Peter Otieno", email: "p.otieno@example.com", phone: "+254 720 555 011",
         deviceType: "MiFi / Router", device: "Sun King Home Router", imei: "", finance: "Sun King",
         service: "Financing Lock Release Support", message: "Account settled in September. Need the device released for resale.",
         status: "completed", createdAt: daysAgo(12) }
@@ -71,7 +71,7 @@
   function addRequest(data) {
     var list = getRequests();
     var item = {
-      id: uid("MZ"),
+      id: uid("SD"),
       name: data.name,
       email: data.email,
       phone: data.phone || "—",
@@ -89,7 +89,7 @@
     return item;
   }
 
-  window.MZAZI = { getRequests: getRequests, saveRequests: saveRequests, addRequest: addRequest, seed: seed, uid: uid };
+  window.SAHIHI = { getRequests: getRequests, saveRequests: saveRequests, addRequest: addRequest, seed: seed, uid: uid };
   seed();
 
   /* ---------- header ---------- */
@@ -172,7 +172,7 @@
 
   /* ---------- toast ---------- */
   var toastEl = null, toastTimer = null;
-  window.mzaziToast = function (text) {
+  window.sahihiToast = function (text) {
     if (!toastEl) {
       toastEl = document.createElement("div");
       toastEl.className = "toast";
@@ -201,7 +201,7 @@
       box.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="m8 12.5 2.5 2.5L16 9.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span><strong>Request received.</strong> Your reference is <strong>' + id + '</strong>. Our desk replies within one business day with the document checklist.</span>';
     }
     form.reset();
-    window.mzaziToast("Request received — reference " + id);
+    window.sahihiToast("Request received — reference " + id);
     return true;
   }
 
@@ -221,7 +221,7 @@
       var consent = form.querySelector('input[name="consent"]');
       if (!consent || !consent.checked) return fail(form, "Please confirm ownership and consent to verification.");
 
-      var item = window.MZAZI.addRequest(data);
+      var item = window.SAHIHI.addRequest(data);
       succeed(form, item.id);
     });
   });
