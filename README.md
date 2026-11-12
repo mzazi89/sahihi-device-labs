@@ -1,22 +1,22 @@
 # MZAZI TECH UNLOCKING CENTER
 
-A premium, mobile-first demonstration website for a fictional device-solutions studio — Android diagnostics, lock-status simulation, IMEI structure demos, security-testing education and a local admin dashboard.
-
-**Fictional demonstration project.** No device is accessed, unlocked or modified. No payment, FRP or security bypass is implemented.
+Marketing site and staff intake dashboard for MZAZI TECH INC — a Nairobi device-solutions practice offering Android diagnostics, lock-status reporting, IMEI verification, security testing, carrier unlocking and financing lock release support.
 
 ## Pages
 
-- `index.html` — hero, trust indicators, services, interactive demo checker, process
-- `services.html` — six service modules, engagement formats, ethical boundaries
-- `how-it-works.html` — end-to-end demonstration workflow
-- `about.html` — brand story, values, build notes
-- `faq.html` — 12 answers incl. data handling and legal limits
-- `contact.html` — demo request form (stored in browser localStorage)
-- `admin.html` — request dashboard, demo passcode `mzazi-demo`
+| Page | Purpose |
+|---|---|
+| `index.html` | Hero, trust indicators, six services, financing partners, service pre-check |
+| `services.html` | Detailed service catalogue, engagement formats, partner network, boundaries |
+| `how-it-works.html` | Intake → verification → scope → provider release → handover |
+| `about.html` | Company story, values, practice areas |
+| `faq.html` | Service, data-handling and eligibility questions |
+| `contact.html` | Service request form (device type, model, IMEI, financing provider) |
+| `admin.html` | Staff dashboard — access code `mzazi-admin` |
 
 ## Stack
 
-Static HTML, CSS and vanilla JavaScript. No build step, no backend, no trackers. Demo requests persist in `localStorage`.
+Static HTML, CSS and vanilla JavaScript. No build step, no backend, no trackers. Requests are stored in the browser (`localStorage`) and can be exported as CSV from the dashboard.
 
 ## Run locally
 
@@ -25,6 +25,6 @@ python3 -m http.server 8080
 # open http://localhost:8080
 ```
 
-## Deploy
+## Policy
 
-Any static host. No configuration required.
+The site does not offer, and the code does not implement, FRP removal, account bypass or circumvention of active carrier or financing locks. Lock release is described as a provider-authorised process requiring settled accounts and proof of ownership.

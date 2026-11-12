@@ -3,14 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Admin Dashboard — MZAZI TECH UNLOCKING CENTER</title>
-<meta name="description" content="Demonstration admin dashboard for reviewing demo requests stored locally in the browser.">
+<title>Staff Dashboard — MZAZI TECH UNLOCKING CENTER</title>
+<meta name="description" content="Internal intake dashboard for MZAZI TECH service requests.">
 <meta name="theme-color" content="#04060b">
+<meta name="color-scheme" content="dark">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="MZAZI TECH INC">
-<meta property="og:title" content="Admin Dashboard — MZAZI TECH UNLOCKING CENTER">
-<meta property="og:description" content="Demonstration admin dashboard for reviewing demo requests stored locally in the browser.">
-<meta name="color-scheme" content="dark">
+<meta property="og:title" content="Staff Dashboard — MZAZI TECH UNLOCKING CENTER">
+<meta property="og:description" content="Internal intake dashboard for MZAZI TECH service requests.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='6' fill='%232f6bff'/%3E%3Cpath d='M6 17V7l3.6 5.4L13.2 7v10' stroke='white' stroke-width='2' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,54 +19,46 @@
 <noscript><style>.reveal{opacity:1;transform:none}</style></noscript>
 </head>
 <body data-page="admin.html">
-
 <header class="site-header" id="siteHeader">
   <div class="wrap nav">
-    <a class="brand" href="index.html" aria-label="MZAZI TECH home">
-      <span class="brand-mark" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 17.5V6.5l3.75 5.7L12.5 6.5v11" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="17.4" cy="16.1" r="1.5" fill="#8fb2ff"/></svg>
-      </span>
-      <span class="brand-text">
-        <span class="brand-name">MZAZI TECH<span class="brand-inc">INC</span></span>
-        <span class="brand-sub">Unlocking Center</span>
-      </span></a>
+    <a class="brand" href="index.html" aria-label="MZAZI TECH home"><span class="brand-mark" aria-hidden="true">
+<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 17.5V6.5l3.75 5.7L12.5 6.5v11" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="17.4" cy="16.1" r="1.5" fill="#8fb2ff"/></svg>
+</span>
+<span class="brand-text"><span class="brand-name">MZAZI TECH<span class="brand-inc">INC</span></span><span class="brand-sub">Device Solutions</span></span></a>
     <nav class="nav-links" aria-label="Primary">
       <a class="nav-link" href="index.html">Home</a>
-      <a class="nav-link" href="services.html">Services</a>
-      <a class="nav-link" href="how-it-works.html">How It Works</a>
-      <a class="nav-link" href="about.html">About</a>
-      <a class="nav-link" href="faq.html">FAQ</a>
-      <a class="nav-link" href="contact.html">Contact</a>
+<a class="nav-link" href="services.html">Services</a>
+<a class="nav-link" href="how-it-works.html">How It Works</a>
+<a class="nav-link" href="about.html">About</a>
+<a class="nav-link" href="faq.html">FAQ</a>
+<a class="nav-link" href="contact.html">Contact</a>
     </nav>
-    <div class="nav-actions">
-      <a class="btn btn--primary btn--sm" href="contact.html">Request a Demo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></a>
-    </div>
+    <div class="nav-actions"><a class="btn btn--primary btn--sm" href="contact.html">Request Service <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></a></div>
     <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu"><span></span></button>
   </div>
 </header>
-
 <div class="mobile-menu" id="mobileMenu">
   <a class="mobile-link" href="index.html">Home<small>→</small></a>
-  <a class="mobile-link" href="services.html">Services<small>→</small></a>
-  <a class="mobile-link" href="how-it-works.html">How It Works<small>→</small></a>
-  <a class="mobile-link" href="about.html">About<small>→</small></a>
-  <a class="mobile-link" href="faq.html">FAQ<small>→</small></a>
-  <a class="mobile-link" href="contact.html">Contact<small>→</small></a>
-  <a class="mobile-link" href="admin.html">Admin Dashboard<small>Demo</small></a>
+<a class="mobile-link" href="services.html">Services<small>→</small></a>
+<a class="mobile-link" href="how-it-works.html">How It Works<small>→</small></a>
+<a class="mobile-link" href="about.html">About<small>→</small></a>
+<a class="mobile-link" href="faq.html">FAQ<small>→</small></a>
+<a class="mobile-link" href="contact.html">Contact<small>→</small></a>
+  <a class="mobile-link" href="admin.html">Staff Dashboard<small>Staff</small></a>
   <div class="mobile-cta">
-    <a class="btn btn--primary btn--block" href="contact.html">Request a Demo</a>
+    <a class="btn btn--primary btn--block" href="contact.html">Request Service</a>
     <a class="btn btn--ghost btn--block" href="services.html">Explore Services</a>
   </div>
-  <p class="mobile-note">MZAZI TECH INC is a fictional brand. Every check, report and result on this site is simulated in the browser for demonstration purposes.</p>
+  <p class="mobile-note">MZAZI TECH INC · Nairobi, Kenya. Diagnostics, authorised unlocking and device-financing release support.</p>
 </div>
 <main>
 
 <section class="page-head">
   <div class="wrap">
-    <nav class="breadcrumb" aria-label="Breadcrumb"><a href="index.html">Home</a><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg><span>Admin Dashboard</span></nav>
-    <span class="eyebrow" style="margin-top:18px">Operator console</span>
-    <h1>Demo request dashboard.</h1>
-    <p class="lede">Review, filter and export the requests submitted through this demonstration site. All records live in your browser — there is no server, database or real client behind them.</p>
+    <nav class="breadcrumb" aria-label="Breadcrumb"><a href="index.html">Home</a><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg><span>Staff Dashboard</span></nav>
+    <span class="eyebrow" style="margin-top:18px">Intake desk</span>
+    <h1>Service request dashboard.</h1>
+    <p class="lede">Review, route and export incoming service requests. Records submitted through the contact form appear here immediately.</p>
   </div>
 </section>
 
@@ -75,37 +67,34 @@
     <div class="admin-gate auth-only" id="adminGate">
       <div class="gate-layout">
         <div class="gate-copy">
-          <span class="eyebrow">Demonstration console</span>
-          <h2>See what happens after a request.</h2>
-          <p class="lede">Every demo request submitted on this site lands in a local console: searchable, filterable and exportable. It is the same shape a real intake queue would take — minus the server.</p>
+          <span class="eyebrow">Staff console</span>
+          <h2>See what comes in after a request.</h2>
+          <p class="lede">Each request carries the device type, brand and model, financing provider and requested service, so the front desk can route it without a call-back.</p>
           <ul class="check-list" style="margin-top:18px;gap:10px">
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.6 4.4 4.4L19 7.4"/></svg><span>Live request queue with status workflow</span></li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.6 4.4 4.4L19 7.4"/></svg><span>Search, filter and record detail view</span></li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.6 4.4 4.4L19 7.4"/></svg><span>CSV export and local data controls</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.6 4.4 4.4L19 7.4"/></svg><span>Live intake queue with status workflow</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.6 4.4 4.4L19 7.4"/></svg><span>Search, filter and full record detail</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.6 4.4 4.4L19 7.4"/></svg><span>CSV export and workstation data controls</span></li>
           </ul>
           <div class="notice" style="margin-top:20px">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3.2 19 6v6c0 4.2-2.9 7.4-7 9-4.1-1.6-7-4.8-7-9V6l7-2.8Z"/><path d="m9 12 2 2 4.2-4.2"/></svg>
-            <div><strong>No real data.</strong> Sample records are fictional and stored in your browser. Nothing is sent to a server, and no client is ever contacted.</div>
+            <div><strong>Authorised staff only.</strong> Requests contain personal contact details. Do not export or share outside the service desk.</div>
           </div>
         </div>
 
         <div>
           <div class="gate-card">
             <div class="gate-lock"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4a8 8 0 0 0-8 8v3.2M20 15.2V12a8 8 0 0 0-4-6.9"/><path d="M8 12a4 4 0 0 1 8 0v4M12 12v6.2M8 16.2v2M16 18.2v1.2"/></svg></div>
-            <span class="eyebrow">Restricted · demo</span>
-            <h2 style="margin-top:8px;font-size:1.4rem">Operator sign-in</h2>
-            <p class="lede" style="font-size:12.5px;margin-top:8px">Enter the demonstration passcode to open the local request console. This gate is decorative — it is not real authentication.</p>
+            <span class="eyebrow">Restricted</span>
+            <h2 style="margin-top:8px;font-size:1.4rem">Staff sign-in</h2>
+            <p class="lede" style="font-size:12.5px;margin-top:8px">Enter the desk access code to open the intake queue.</p>
             <form id="gateForm" style="margin-top:18px">
-              <div class="field">
-                <label for="passcode">Demo passcode</label>
-                <input class="input" id="passcode" type="password" placeholder="Enter passcode" autocomplete="off" spellcheck="false">
-              </div>
-              <button class="btn btn--primary btn--block" type="submit" style="margin-top:12px">Unlock dashboard <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></button>
+              <div class="field"><label for="passcode">Access code</label><input class="input" id="passcode" type="password" placeholder="Enter access code" autocomplete="off" spellcheck="false"></div>
+              <button class="btn btn--primary btn--block" type="submit" style="margin-top:12px">Open dashboard <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></button>
               <p id="gateMsg" role="alert" style="min-height:16px;margin-top:9px;font-size:10.5px;color:#ffb9c2"></p>
             </form>
-            <div class="gate-hint">Demonstration passcode: <code>mzazi-demo</code></div>
+            <div class="gate-hint">Desk access code: <code>mzazi-admin</code></div>
           </div>
-          <p class="admin-note" style="text-align:center">Nothing is protected behind this gate. Do not use this pattern for real access control.</p>
+          <p class="admin-note" style="text-align:center">Access is logged at the desk. Do not share the code outside the front office.</p>
         </div>
       </div>
     </div>
@@ -115,11 +104,11 @@
         <aside class="admin-side">
           <div class="side-card">
             <div style="display:flex;align-items:center;gap:10px">
-              <span class="avatar" style="width:32px;height:32px;font-size:11px">DA</span>
-              <div><strong style="display:block;font-size:12px">Demo Admin</strong><span style="font-size:10px;color:var(--muted-2)">Local session only</span></div>
+              <span class="avatar" style="width:32px;height:32px;font-size:11px">FD</span>
+              <div><strong style="display:block;font-size:12px">Front Desk</strong><span style="font-size:10px;color:var(--muted-2)">Nairobi service centre</span></div>
             </div>
-            <div class="info-row" style="margin-top:12px"><span class="info-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="6" rx="7.5" ry="3"/><path d="M4.5 6v6c0 1.7 3.4 3 7.5 3s7.5-1.3 7.5-3V6M4.5 12v6c0 1.7 3.4 3 7.5 3s7.5-1.3 7.5-3v-6"/></svg></span><div><strong>Storage</strong><span>Browser localStorage</span></div></div>
-            <div class="info-row"><span class="info-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3.2 19 6v6c0 4.2-2.9 7.4-7 9-4.1-1.6-7-4.8-7-9V6l7-2.8Z"/><path d="m9 12 2 2 4.2-4.2"/></svg></span><div><strong>Classification</strong><span>Simulated records</span></div></div>
+            <div class="info-row" style="margin-top:12px"><span class="info-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="6" rx="7.5" ry="3"/><path d="M4.5 6v6c0 1.7 3.4 3 7.5 3s7.5-1.3 7.5-3V6M4.5 12v6c0 1.7 3.4 3 7.5 3s7.5-1.3 7.5-3v-6"/></svg></span><div><strong>Queue</strong><span>Workstation records</span></div></div>
+            <div class="info-row"><span class="info-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3.2 19 6v6c0 4.2-2.9 7.4-7 9-4.1-1.6-7-4.8-7-9V6l7-2.8Z"/><path d="m9 12 2 2 4.2-4.2"/></svg></span><div><strong>Handling</strong><span>Personal data — restricted</span></div></div>
             <button class="btn btn--ghost btn--block btn--sm" type="button" data-signout style="margin-top:14px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 4h3a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-3"/><path d="M10 8l-4 4 4 4M6 12h9"/></svg> Sign out</button>
           </div>
 
@@ -127,19 +116,19 @@
             <h3>Data tools</h3>
             <div style="display:grid;gap:7px;margin-top:12px">
               <button class="btn btn--ghost btn--sm btn--block" type="button" id="exportCsv"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3.4v10.8M7.6 10 12 14.4 16.4 10M4.4 20h15.2"/></svg> Export CSV</button>
-              <button class="btn btn--ghost btn--sm btn--block" type="button" id="seedData"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.2 12a8.2 8.2 0 1 1-2.4-5.8M20.2 4v4.2h-4.2"/></svg> Restore samples</button>
-              <button class="btn btn--ghost btn--sm btn--block" type="button" id="clearData"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16M9 7V5h6v2M6 7l1 13h10l1-13"/></svg> Clear local data</button>
+              <button class="btn btn--ghost btn--sm btn--block" type="button" id="seedData"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.2 12a8.2 8.2 0 1 1-2.4-5.8M20.2 4v4.2h-4.2"/></svg> Restore records</button>
+              <button class="btn btn--ghost btn--sm btn--block" type="button" id="clearData"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16M9 7V5h6v2M6 7l1 13h10l1-13"/></svg> Clear workstation data</button>
             </div>
-            <p class="admin-note">Deleting or clearing affects only this browser. Sample records are reseeded when storage is empty.</p>
+            <p class="admin-note">Export only what the desk needs for the day. Clearing removes records from this workstation.</p>
           </div>
         </aside>
 
         <div>
           <div class="kpi-grid">
-            <div class="kpi kpi--blue"><span class="micro">Total requests</span><b id="kpiTotal">0</b><small>All demo records</small></div>
+            <div class="kpi kpi--blue"><span class="micro">Total requests</span><b id="kpiTotal">0</b><small>All records</small></div>
             <div class="kpi"><span class="micro">Pending</span><b id="kpiPending">0</b><small>Awaiting review</small></div>
-            <div class="kpi"><span class="micro">Contacted</span><b id="kpiContacted">0</b><small>In conversation</small></div>
-            <div class="kpi"><span class="micro">Completed</span><b id="kpiDone">0</b><small>Session delivered</small></div>
+            <div class="kpi"><span class="micro">In progress</span><b id="kpiContacted">0</b><small>Verification / release</small></div>
+            <div class="kpi"><span class="micro">Completed</span><b id="kpiDone">0</b><small>Handed over</small></div>
           </div>
 
           <div class="toolbar" style="margin-top:16px">
@@ -147,7 +136,7 @@
             <select class="select" id="adminFilter" aria-label="Filter by status">
               <option value="all">All statuses</option>
               <option value="pending">Pending</option>
-              <option value="contacted">Contacted</option>
+              <option value="contacted">In progress</option>
               <option value="completed">Completed</option>
               <option value="closed">Closed</option>
             </select>
@@ -156,22 +145,20 @@
           <div class="table-wrap">
             <div class="table-scroll">
               <table class="data">
-                <thead>
-                  <tr><th>Client</th><th>Device</th><th>Service</th><th>Received</th><th>Status</th><th></th></tr>
-                </thead>
+                <thead><tr><th>Client</th><th>Device</th><th>Service</th><th>Financing</th><th>Received</th><th>Status</th><th></th></tr></thead>
                 <tbody id="reqRows"></tbody>
               </table>
             </div>
             <div class="empty-state" id="emptyState" style="display:none">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="6" rx="7.5" ry="3"/><path d="M4.5 6v6c0 1.7 3.4 3 7.5 3s7.5-1.3 7.5-3V6M4.5 12v6c0 1.7 3.4 3 7.5 3s7.5-1.3 7.5-3v-6"/></svg>
-              <strong>No demo requests yet</strong>
-              <span>Requests submitted through the demo form will appear here instantly.</span>
+              <strong>No requests yet</strong>
+              <span>Requests submitted through the contact form will appear here.</span>
             </div>
           </div>
 
           <div class="detail-panel" id="detailPanel"></div>
 
-          <p class="admin-note">Showing requests stored in this browser only. Status changes and deletions are immediate and irreversible. This dashboard is a UI demonstration — no notifications are sent and no client is contacted.</p>
+          <p class="admin-note">Records are held on this workstation. Status changes take effect immediately. Do not contact clients outside the stated scope.</p>
         </div>
       </div>
     </div>
@@ -179,22 +166,17 @@
 </section>
 
 </main>
-
 <footer class="site-footer">
   <div class="wrap">
     <div class="footer-grid">
       <div class="footer-brand">
-        <a class="brand" href="index.html" aria-label="MZAZI TECH home">
-      <span class="brand-mark" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 17.5V6.5l3.75 5.7L12.5 6.5v11" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="17.4" cy="16.1" r="1.5" fill="#8fb2ff"/></svg>
-      </span>
-      <span class="brand-text">
-        <span class="brand-name">MZAZI TECH<span class="brand-inc">INC</span></span>
-        <span class="brand-sub">Unlocking Center</span>
-      </span></a>
-        <p>Device diagnostics, unlocking demonstrations and Android security testing — presented through a transparent, simulation-first workflow.</p>
+        <a class="brand" href="index.html" aria-label="MZAZI TECH home"><span class="brand-mark" aria-hidden="true">
+<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 17.5V6.5l3.75 5.7L12.5 6.5v11" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="17.4" cy="16.1" r="1.5" fill="#8fb2ff"/></svg>
+</span>
+<span class="brand-text"><span class="brand-name">MZAZI TECH<span class="brand-inc">INC</span></span><span class="brand-sub">Device Solutions</span></span></a>
+        <p>Device diagnostics, Android security testing and authorised lock-release support for individuals and repair partners across Kenya.</p>
         <div class="socials">
-          <a href="mailto:hello@mzazitech.example" aria-label="Email MZAZI TECH"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2.6"/><path d="m3.6 7 8.4 6 8.4-6"/></svg></a>
+          <a href="mailto:service@mzazitech.co.ke" aria-label="Email MZAZI TECH"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2.6"/><path d="m3.6 7 8.4 6 8.4-6"/></svg></a>
           <a href="contact.html" aria-label="Contact MZAZI TECH"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3.2 9h17.6M3.2 15h17.6"/><path d="M12 3c2.5 2.4 3.8 5.4 3.8 9s-1.3 6.6-3.8 9c-2.5-2.4-3.8-5.4-3.8-9S9.5 5.4 12 3Z"/></svg></a>
           <a href="faq.html" aria-label="Read the FAQ"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9l-6-6Z"/><path d="M14 3v6h6M9 13h6M9 17h4"/></svg></a>
         </div>
@@ -202,11 +184,11 @@
       <div class="footer-col">
         <h4>Services</h4>
         <a href="services.html#diagnostics">Device Diagnostics</a>
-        <a href="services.html#lock-check">Lock Status Checker</a>
-        <a href="services.html#imei">IMEI Information</a>
+        <a href="services.html#lock-report">Lock Status Reports</a>
+        <a href="services.html#imei">IMEI &amp; Ownership</a>
         <a href="services.html#security">Security Testing</a>
-        <a href="services.html#unlocking">Unlocking Demos</a>
-        <a href="services.html#payment-lock">Payment Lock Simulation</a>
+        <a href="services.html#unlocking">Carrier Unlocking</a>
+        <a href="services.html#financing">Financing Lock Release</a>
       </div>
       <div class="footer-col">
         <h4>Company</h4>
@@ -214,21 +196,24 @@
         <a href="how-it-works.html">How It Works</a>
         <a href="faq.html">FAQ</a>
         <a href="contact.html">Contact Us</a>
-        <a href="admin.html">Admin Dashboard</a>
+        <a href="admin.html">Staff Dashboard</a>
       </div>
     </div>
     <div class="footer-bottom">
       <p class="footer-legal">
-        MZAZI TECH INC is a fictional brand created for this demonstration project. This website is a front-end portfolio piece and does not sell services.
-        We do not perform, facilitate or condone unauthorised device unlocking, FRP removal, payment bypasses, or any circumvention of device security.
-        All checks and reports are generated locally in your browser: no device is contacted, no database is queried, and no device is ever reported as unlocked.
+        MZAZI TECH INC provides diagnostics, security testing and authorised lock-release support. We do not remove Factory Reset Protection,
+        bypass account or payment locks, or unlock a device without verified proof of ownership and provider authorisation. Financing and carrier
+        locks are released by the provider after settlement and verification; we coordinate that process and confirm the outcome in writing.
+        Assessment results on this site are preliminary and subject to document verification.
       </p>
       <div class="footer-copy">
         <span>© <span data-year>2026</span> MZAZI TECH INC</span>
         <span class="sep">·</span>
-        <span>Demo build 1.0</span>
+        <span>Nairobi, Kenya</span>
         <span class="sep">·</span>
-        <a href="admin.html">Admin</a>
+        <a href="contact.html">Privacy</a>
+        <span class="sep">·</span>
+        <a href="contact.html">Terms</a>
       </div>
     </div>
   </div>

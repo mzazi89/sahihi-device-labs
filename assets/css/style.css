@@ -264,12 +264,6 @@ p { color: var(--text-soft); }
   white-space: nowrap;
 }
 
-.badge--demo {
-  color: #ffd7a1;
-  border-color: rgba(255, 182, 72, 0.35);
-  background: rgba(255, 182, 72, 0.09);
-}
-
 .badge--blue {
   color: var(--blue-3);
   border-color: rgba(47, 107, 255, 0.38);
@@ -1844,3 +1838,20 @@ h2, h3 { text-wrap: balance; }
   .footer-grid { grid-template-columns: 1fr 1fr; }
   .footer-brand { grid-column: 1 / -1; }
 }
+
+/* partner strip */
+.partner-row { display: flex; flex-wrap: wrap; gap: 8px; }
+.partner {
+  flex: 1 1 140px;
+  text-align: center;
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-soft);
+  padding: 14px 12px;
+  border-radius: 9px;
+  border: 1px solid var(--line-strong);
+  background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.015));
+}
+table.data { min-width: 780px; }

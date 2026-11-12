@@ -1,7 +1,6 @@
 /* ============================================================
-   MZAZI TECH — simulated device checker (front-end only)
-   No network requests. No device is contacted. All output is
-   fabricated demonstration data.
+   MZAZI TECH — service pre-check (browser-side guidance only)
+   Does not contact a device, carrier or financing provider.
    ============================================================ */
 (function () {
   "use strict";
@@ -23,42 +22,18 @@
 
   var copy = {
     lock: {
-      label: "Device identifier or model",
-      hint: "Try any model name or serial, e.g. “Galaxy S23” or “SN-88213-AA”.",
-      placeholder: "e.g. Pixel 7a / SN-88213-AA",
-      steps: [
-        "Opening local simulation session",
-        "Reading demonstration device profile",
-        "Mapping lock-state reference table",
-        "Composing demo report"
-      ]
+      label: "Device model or lock type",
+      hint: "Include the financier or carrier if you know it, e.g. “Watu lock” or “carrier lock”.",
+      placeholder: "e.g. Galaxy S23 / M-KOPA lock",
+      steps: ["Reading request", "Classifying lock type", "Matching service route", "Preparing document checklist"]
     },
     imei: {
-      label: "IMEI (15 digits, demo input)",
-      hint: "Use any 15-digit number. Nothing is transmitted or validated against a real database.",
+      label: "IMEI (15 digits)",
+      hint: "Dial *#06# to display it. Validation runs locally — nothing is transmitted.",
       placeholder: "e.g. 353918082379567",
-      steps: [
-        "Opening local simulation session",
-        "Parsing IMEI structure",
-        "Running Luhn checksum routine",
-        "Composing demo report"
-      ]
+      steps: ["Reading request", "Parsing IMEI structure", "Running checksum routine", "Preparing result"]
     }
   };
-
-  /* deterministic pseudo-random from a string */
-  function hash(str) {
-    var h = 2166136261;
-    for (var i = 0; i < str.length; i++) {
-      h ^= str.charCodeAt(i);
-      h = Math.imul(h, 16777619);
-    }
-    return h >>> 0;
-  }
-
-  function pick(list, seed, salt) {
-    return list[(seed + salt * 2654435761) % list.length];
-  }
 
   function esc(s) {
     return String(s).replace(/[&<>"']/g, function (c) {
@@ -91,109 +66,134 @@
     t.addEventListener("click", function () { setMode(t.getAttribute("data-tab")); });
   });
 
-  function luhnCheck(digits14, check) {
+  function luhn(d14, check) {
     var sum = 0;
     for (var i = 0; i < 14; i++) {
-      var d = parseInt(digits14.charAt(i), 10);
-      if (i % 2 === 1) {
-        d *= 2;
-        if (d > 9) d -= 9;
-      }
+      var d = parseInt(d14.charAt(i), 10);
+      if (i % 2 === 1) { d *= 2; if (d > 9) d -= 9; }
       sum += d;
     }
     return (10 - (sum % 10)) % 10 === parseInt(check, 10);
   }
 
-  function lockReport(seed, raw) {
-    var models = ["Android handset (reference profile A)", "Android handset (reference profile B)", "Android handset (reference profile C)"];
-    var boot = pick(["Reference: locked (demo)", "Reference: not in demo dataset"], seed, 3);
-    var screen = pick(["PIN / pattern set (demo)", "No screen lock recorded (demo)"], seed, 7);
-    var frp = pick(["Provisioned — no live check performed", "Provisioning state: unknown in demo"], seed, 11);
-
+  function classify(raw) {
+    var s = raw.toLowerCase();
+    if (/frp|google account|activation lock|bypass/.test(s)) {
+      return {
+        route: "Account protection — not removable",
+        docs: "Proof of purchase, ID, original account details",
+        time: "Manufacturer case only",
+        note: "Factory Reset Protection exists to stop stolen devices being reused. We do not remove it. Bring proof of purchase and we will help you contact the manufacturer.",
+        declined: true
+      };
+    }
+    if (/m-?kopa|watu|mogo|onphone|sun ?king|finance|financed|installment|installment|loan/.test(s)) {
+      return {
+        route: "Financing lock release",
+        docs: "Provider statement showing settled account, receipt, ID",
+        time: "5–10 working days after provider accepts",
+        note: "The lock is released by the financier, not by us. We prepare the file and follow up once the account is confirmed settled.",
+        declined: false
+      };
+    }
+    if (/carrier|network|safaricom|airtel|telkom|orange|sim lock/.test(s)) {
+      return {
+        route: "Carrier unlock",
+        docs: "Receipt, contract status, ID",
+        time: "3–7 working days",
+        note: "We confirm eligibility with the carrier, submit the request and hand you the written confirmation.",
+        declined: false
+      };
+    }
+    if (/tablet|ipad|tab/.test(s)) {
+      return {
+        route: "Diagnostics & lock report",
+        docs: "Receipt or provider statement, ID",
+        time: "Same day at the desk",
+        note: "Bring the tablet in for a diagnostic sheet and a lock-status report. Ownership is verified before any work.",
+        declined: false
+      };
+    }
     return {
-      title: "Lock status — simulated report",
-      rows: [
-        ["Input token", esc(raw)],
-        ["Device class", pick(models, seed, 2)],
-        ["Bootloader state", boot],
-        ["Screen lock", screen],
-        ["Factory reset protection", frp],
-        ["Carrier lock", pick(["No carrier restriction found in sample", "Carrier profile not in demo dataset"], seed, 13)],
-        ["Report basis", "Fabricated demo data"]
-      ],
-      foot: "No device was contacted, queried or modified. This output is generated in your browser for interface demonstration only."
+      route: "Diagnostics & lock report",
+      docs: "Receipt or provider statement, ID",
+      time: "Same day at the desk",
+      note: "Start with a diagnostic assessment. We will confirm the lock type on the bench and route it from there.",
+      declined: false
     };
   }
 
-  function imeiReport(digits, raw) {
-    var seed = hash(digits);
-    var tac = digits.slice(0, 8);
-    var serial = digits.slice(8, 14);
-    var check = digits.slice(14, 15);
-    var valid = luhnCheck(digits.slice(0, 14), check);
-    var models = [
-      "Samsung Galaxy A-series (indicative)",
-      "Google Pixel (indicative)",
-      "Xiaomi Redmi (indicative)",
-      "Tecno Spark (indicative)",
-      "Nokia G-series (indicative)"
-    ];
-
+  function lockResult(raw) {
+    var c = classify(raw);
+    var ref = "MZ-" + Math.floor(2000 + Math.random() * 7000);
     return {
-      title: "IMEI information — simulated report",
+      title: "Pre-check summary",
+      badge: c.declined ? "REVIEW" : "ROUTE",
+      rows: [
+        ["Reference", ref],
+        ["Request", esc(raw)],
+        ["Service route", c.route],
+        ["Documents to bring", c.docs],
+        ["Typical turnaround", c.time]
+      ],
+      note: c.note,
+      foot: "Guidance only — no device, carrier or financing provider was contacted. Eligibility is confirmed after document verification."
+    };
+  }
+
+  function imeiResult(digits, raw) {
+    var valid = luhn(digits.slice(0, 14), digits.slice(14));
+    return {
+      title: "IMEI structure check",
+      badge: valid ? "VALID FORMAT" : "CHECK DIGIT",
       rows: [
         ["Input", esc(raw)],
-        ["TAC (first 8)", tac],
-        ["Serial segment", serial],
-        ["Check digit", check],
+        ["TAC (first 8)", digits.slice(0, 8)],
+        ["Serial segment", digits.slice(8, 14)],
+        ["Check digit", digits.slice(14)],
         ["Luhn checksum", valid ? "Passes local checksum" : "Fails local checksum"],
-        ["Indicative model", pick(models, seed, 5)],
-        ["Reporting status", "Not queried (demo)"],
-        ["Report basis", "Locally computed demo data"]
+        ["Ownership status", "Confirmed at verification"]
       ],
-      foot: "The checksum is calculated on your device and is not an ownership or authenticity verification. No database or network lookup is performed."
+      note: valid
+        ? "The number is structurally valid. That does not prove ownership or clear a lock — bring the receipt or provider statement to verification."
+        : "The check digit does not match the rest of the number. Re-read it from Settings → About phone, or dial *#06#.",
+      foot: "Calculated in your browser. No blacklist, carrier or ownership database was queried."
     };
   }
 
-  function render(report) {
+  function render(r) {
     result.innerHTML =
-      '<div class="result-head"><h4>' + report.title + '</h4><span class="badge badge--demo">DEMO</span></div>' +
-      '<div class="result-rows">' +
-      report.rows.map(function (r, i) {
-        return '<div class="result-row"><span>' + r[0] + '</span><b class="' + (i === 0 ? "mono" : "") + '">' + r[1] + "</b></div>";
-      }).join("") +
-      "</div>" +
-      '<div class="result-foot">' + report.foot + "</div>" +
-      '<span class="stamp">Simulated</span>';
+      '<div class="result-head"><h4>' + r.title + '</h4><span class="badge badge--blue">' + r.badge + '</span></div>' +
+      '<div class="result-rows">' + r.rows.map(function (row, i) {
+        return '<div class="result-row"><span>' + row[0] + '</span><b class="' + (i === 0 ? "mono" : "") + '">' + row[1] + "</b></div>";
+      }).join("") + "</div>" +
+      '<div class="result-foot">' + r.note + "<br><br>" + r.foot + "</div>";
     result.classList.add("is-on");
   }
 
   function error(msg) {
     result.innerHTML =
-      '<div class="result-head"><h4>Input required</h4><span class="badge">NOT RUN</span></div>' +
+      '<div class="result-head"><h4>Input needed</h4><span class="badge">NOT RUN</span></div>' +
       '<div class="result-rows"><div class="result-row"><span>Status</span><b>' + esc(msg) + "</b></div></div>" +
-      '<div class="result-foot">Nothing was checked. Adjust the input and run the demonstration again.</div>';
+      '<div class="result-foot">Adjust the input and run the pre-check again.</div>';
     result.classList.add("is-on");
   }
 
   runBtn.addEventListener("click", function () {
     if (busy) return;
     var raw = input.value.trim();
-
-    if (!raw) return error("Enter an identifier to continue.");
+    if (!raw) return error("Enter a device model or IMEI to continue.");
 
     if (mode === "imei") {
       var digits = raw.replace(/[\s-]/g, "");
-      if (!/^\d{15}$/.test(digits)) {
-        return error("An IMEI must contain exactly 15 digits.");
-      }
-    } else if (raw.length < 4) {
-      return error("Use at least 4 characters for the demo identifier.");
+      if (!/^\d{15}$/.test(digits)) return error("An IMEI must contain exactly 15 digits.");
+    } else if (raw.length < 3) {
+      return error("Use at least 3 characters, e.g. a model or lock type.");
     }
 
     busy = true;
     runBtn.setAttribute("disabled", "true");
-    runBtn.textContent = "Running simulation…";
+    runBtn.textContent = "Checking…";
     result.classList.remove("is-on");
     log.innerHTML = "";
     log.classList.add("is-on");
@@ -209,33 +209,29 @@
         fill.style.width = Math.round(((i + 1) / steps.length) * 100) + "%";
         var line = document.createElement("div");
         line.className = "log-line";
-        line.style.animationDelay = "0ms";
         line.textContent = steps[i];
         log.appendChild(line);
         i++;
-        setTimeout(next, 480 + Math.random() * 220);
+        setTimeout(next, 420 + Math.random() * 200);
         return;
       }
-
-      var report = mode === "imei"
-        ? imeiReport(raw.replace(/[\s-]/g, ""), raw)
-        : lockReport(hash(raw.toLowerCase()), raw);
-
-      render(report);
+      if (mode === "imei") {
+        var d = raw.replace(/[\s-]/g, "");
+        render(imeiResult(d, raw));
+      } else {
+        render(lockResult(raw));
+      }
       busy = false;
       runBtn.removeAttribute("disabled");
       runBtn.innerHTML = runHtml;
-      window.mzaziToast && window.mzaziToast("Simulated result generated");
+      window.mzaziToast && window.mzaziToast("Pre-check ready");
     }
 
-    setTimeout(next, 220);
+    setTimeout(next, 200);
   });
 
   input.addEventListener("keydown", function (e) {
-    if (e.key === "Enter") {
-      e.preventDefault();
-      runBtn.click();
-    }
+    if (e.key === "Enter") { e.preventDefault(); runBtn.click(); }
   });
 
   setMode("lock");
