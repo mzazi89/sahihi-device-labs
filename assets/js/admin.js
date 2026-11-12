@@ -4,8 +4,8 @@
 (function () {
   "use strict";
 
-  var AUTH_KEY = "sahihi.desk.v2";
-  var PASSCODE = "sahihi-admin";
+  var AUTH_KEY = "sahihi.desk.v3";
+  var PASSCODE = "42246776";
 
   var gate = document.getElementById("adminGate");
   var gateForm = document.getElementById("gateForm");

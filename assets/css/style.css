@@ -1855,3 +1855,6 @@ h2, h3 { text-wrap: balance; }
   background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.015));
 }
 table.data { min-width: 780px; }
+
+.brand-logo { height: 36px; width: auto; display: block; }
+@media (min-width: 560px) { .brand-logo { height: 38px; } }

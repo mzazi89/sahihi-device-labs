@@ -12,7 +12,7 @@ Marketing site and staff intake dashboard for SAHIHI DEVICE LABS LTD — a Nairo
 | `about.html` | Company story, values, practice areas |
 | `faq.html` | Service, data-handling and eligibility questions |
 | `contact.html` | Service request form (device type, model, IMEI, financing provider) |
-| `admin.html` | Staff dashboard — access code `sahihi-admin` |
+| `admin.html` | Staff dashboard — access code `42246776` |
 
 ## Stack
 
